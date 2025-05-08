@@ -12,7 +12,7 @@ export class PrintComponent {
   responseMessage = '';
 
   ngOnInit(): void {
-    this.socket = io('ws://192.168.1.100:8080');
+    this.socket = io('ws://192.168.1.102:8080');
 
     this.socket.on('connect', () => {
       this.connectionStatus = '✅ Connected to WebSocket server';
