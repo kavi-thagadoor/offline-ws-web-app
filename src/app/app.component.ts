@@ -23,6 +23,7 @@ export class AppComponent {
   sendData() {
     if (this.dataToSend) {
       this.socket.emit('send_data', this.dataToSend);
+      console.log('Data sent:', this.dataToSend);
       this.logs.push(`Sent: ${this.dataToSend}`);
       this.dataToSend = '';
     }
