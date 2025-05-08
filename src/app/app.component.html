@@ -1,2 +1,7 @@
-<app-print></app-print>
-<router-outlet />
+<input [(ngModel)]="dataToSend" placeholder="Type data" />
+<button (click)="sendData()">Send</button>
+
+<h3>Logs:</h3>
+<ul>
+  <li *ngFor="let log of logs">{{ log }}</li>
+</ul>

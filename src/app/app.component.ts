@@ -1,13 +1,30 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { PrintComponent } from "./print/print.component";
+import { io } from 'socket.io-client';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, PrintComponent],
+  imports: [CommonModule,FormsModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'angular-websocket-app';
+  title = 'web-socket-app';
+  socket: any;
+  dataToSend: string = '';
+  logs: string[] = [];
+
+  constructor() {
+    this.socket = io('http://192.168.1.102:3000');
+  }
+
+  sendData() {
+    if (this.dataToSend) {
+      this.socket.emit('send_data', this.dataToSend);
+      this.logs.push(`Sent: ${this.dataToSend}`);
+      this.dataToSend = '';
+    }
+  }
 }
