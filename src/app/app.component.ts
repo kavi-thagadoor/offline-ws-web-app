@@ -17,7 +17,7 @@ export class AppComponent {
   logs: string[] = [];
 
   constructor() {
-    this.socket = io('http://192.168.1.102:3000');
+    this.socket = io('http://disturbed-abbey-pttm-88f96613.koyeb.app');
   }
 
   sendData() {
